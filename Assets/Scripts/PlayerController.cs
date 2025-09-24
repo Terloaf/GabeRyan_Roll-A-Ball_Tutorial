@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviour
         count = 0;
 
         SetCountText();
-
     }
 
     private void FixedUpdate()
