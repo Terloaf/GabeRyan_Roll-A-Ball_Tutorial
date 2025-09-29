@@ -2,6 +2,8 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.UI;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public float speed = 0;
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
+    private float jumpForce = 250;
+    private bool isGrounded;
 
     void Start()
     {
@@ -24,12 +28,24 @@ public class PlayerController : MonoBehaviour
 
         SetCountText();
     }
+    private void Update()
+    {
+        if (isGrounded == true && Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(Vector3.up * jumpForce);
 
+        }
+        
+
+    }
     private void FixedUpdate()
     {
-
+        
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
         rb.AddForce(movement * speed);
+
+        
+
     }
     void OnMove(InputValue movementValue)
     {
@@ -40,13 +56,14 @@ public class PlayerController : MonoBehaviour
 
 
     }
-
+    
     void SetCountText()
     {
         countText.text = "Count: " + count.ToString();
         if(count >= 12)
         {
             winTextObject.SetActive(true);
+            Destroy(GameObject.FindGameObjectWithTag("Enemy"));
         }
     }
 
@@ -60,6 +77,36 @@ public class PlayerController : MonoBehaviour
         }
         
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+
+            winTextObject.gameObject.SetActive(true);
+            winTextObject.GetComponent<TextMeshProUGUI>().text = "You lose!";
+        }
+
+        
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = false;
+        }
+    }
+
+
+
+
+
 }
 
 
