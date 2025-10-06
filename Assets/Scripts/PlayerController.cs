@@ -17,7 +17,9 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
     private float jumpForce = 250;
+    private float slamForce = 1000;
     private bool isGrounded;
+    public bool slamForceState;
 
     void Start()
     {
@@ -32,8 +34,15 @@ public class PlayerController : MonoBehaviour
     {
         if (isGrounded == true && Input.GetKeyDown(KeyCode.Space))
         {
+            slamForceState = false;
             rb.AddForce(Vector3.up * jumpForce);
 
+        }
+        else if (isGrounded == false && Input.GetKeyDown(KeyCode.Space))
+        {
+            slamForceState = true;
+            rb.AddForce(Vector3.down * slamForce);
+            
         }
         
 
@@ -82,8 +91,10 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            slamForceState = false;
             isGrounded = true;
         }
+        
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -93,6 +104,11 @@ public class PlayerController : MonoBehaviour
             winTextObject.GetComponent<TextMeshProUGUI>().text = "You lose!";
         }
 
+        if (slamForceState == true && collision.gameObject.CompareTag("Breakable"))
+        {
+            Destroy(GameObject.FindGameObjectWithTag("Breakable"));
+            
+        }
         
     }
     private void OnCollisionExit(Collision collision)
@@ -101,6 +117,9 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = false;
         }
+       
+        
+
     }
 
 
