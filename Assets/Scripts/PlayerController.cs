@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private float slamForce = 1000;
     private bool isGrounded;
     public bool slamForceState;
+    private bool isGroundedUnlocked = false;
 
     void Start()
     {
@@ -32,7 +33,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        if (isGrounded == true && Input.GetKeyDown(KeyCode.Space))
+        if (isGrounded == true && isGroundedUnlocked == true && Input.GetKeyDown(KeyCode.Space))
         {
             slamForceState = false;
             rb.AddForce(Vector3.up * jumpForce);
@@ -85,6 +86,11 @@ public class PlayerController : MonoBehaviour
             SetCountText();
         }
         
+        if (other.gameObject.CompareTag("JumpPowerUp"))
+        {
+            other.gameObject.SetActive(false);
+            isGroundedUnlocked = true;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
