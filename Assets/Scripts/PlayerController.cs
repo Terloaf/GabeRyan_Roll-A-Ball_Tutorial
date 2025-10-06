@@ -94,6 +94,7 @@ public class PlayerController : MonoBehaviour
             slamForceState = false;
             isGrounded = true;
         }
+        
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -106,6 +107,7 @@ public class PlayerController : MonoBehaviour
         if (slamForceState == true && collision.gameObject.CompareTag("Breakable"))
         {
             Destroy(GameObject.FindGameObjectWithTag("Breakable"));
+            
         }
         
     }
@@ -115,7 +117,7 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = false;
         }
-
+       
         
 
     }
