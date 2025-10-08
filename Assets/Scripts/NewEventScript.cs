@@ -16,6 +16,7 @@ public class NewEventScript : MonoBehaviour
         if (triggerEvent == true)
         {
             EnemySpheresParent.SetActive(true);
+            Destroy(GameObject.FindGameObjectWithTag("Roll Event"));
         }
     }
 
@@ -23,8 +24,9 @@ public class NewEventScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Destroy(GameObject.FindGameObjectWithTag("Roll Event"));
             triggerEvent = true;
+            
+            
 
         }
     }

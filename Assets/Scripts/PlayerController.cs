@@ -121,6 +121,12 @@ public class PlayerController : MonoBehaviour
             Destroy(GameObject.FindGameObjectWithTag("Breakable"));
             
         }
+        if (collision.gameObject.CompareTag("EnemySphere"))
+        {
+            Destroy(gameObject);
+            winTextObject.gameObject.SetActive(true);
+            winTextObject.GetComponent<TextMeshProUGUI>().text = "You lose!";
+        }
         
     }
     private void OnCollisionExit(Collision collision)
