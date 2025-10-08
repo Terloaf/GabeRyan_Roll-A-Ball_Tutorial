@@ -9,6 +9,9 @@ TagManager:
   - Ground
   - Breakable
   - JumpPowerUp
+  - SlamPowerUp
+  - Roll Event
+  - EnemySphere
   layers:
   - Default
   - TransparentFX
