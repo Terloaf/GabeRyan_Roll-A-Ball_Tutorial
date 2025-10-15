@@ -22,9 +22,11 @@ public class PlayerController : MonoBehaviour
     public bool slamForceState;
     private bool isGroundedUnlocked = false;
     private bool isSlamUnlocked = false;
+    public GameObject BridgeFall;
 
     void Start()
     {
+        BridgeFall.SetActive(false);
         winTextObject.SetActive(false);
         rb = GetComponent<Rigidbody>();
 
@@ -91,6 +93,7 @@ public class PlayerController : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             isGroundedUnlocked = true;
+            BridgeFall.SetActive(true);
         }
         if (other.gameObject.CompareTag("SlamPowerUp"))
         {
