@@ -16,23 +16,28 @@ public class PlayerController : MonoBehaviour
     public float speed = 0;
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
+    public GameObject BridgeObject;
+    public Animator BridgeFall;
     private float jumpForce = 250;
     private float slamForce = 1000;
     private bool isGrounded;
-    public bool slamForceState;
+    private bool slamForceState;
     private bool isGroundedUnlocked = false;
     private bool isSlamUnlocked = false;
-    public GameObject BridgeFall;
 
     void Start()
     {
-        BridgeFall.SetActive(false);
         winTextObject.SetActive(false);
         rb = GetComponent<Rigidbody>();
 
         count = 0;
 
         SetCountText();
+        
+
+        BridgeFall = BridgeObject.GetComponent<Animator>();
+        BridgeFall.enabled = false;
+      
     }
     private void Update()
     {
@@ -93,7 +98,7 @@ public class PlayerController : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             isGroundedUnlocked = true;
-            BridgeFall.SetActive(true);
+            BridgeFall.enabled = true; 
         }
         if (other.gameObject.CompareTag("SlamPowerUp"))
         {

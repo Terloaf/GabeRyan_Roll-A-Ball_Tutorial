@@ -18,6 +18,8 @@ public class NewEventScript : MonoBehaviour
             EnemySpheresParent.SetActive(true);
             Destroy(GameObject.FindGameObjectWithTag("Roll Event"));
         }
+
+       
     }
 
     void OnTriggerEnter(Collider other)
@@ -25,8 +27,6 @@ public class NewEventScript : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             triggerEvent = true;
-            
-            
 
         }
     }
