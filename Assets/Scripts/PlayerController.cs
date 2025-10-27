@@ -137,6 +137,15 @@ public class PlayerController : MonoBehaviour
         }
         
     }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            slamForceState = false;
+            isGrounded = true;
+        }
+    }
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
