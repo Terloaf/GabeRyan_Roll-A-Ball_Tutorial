@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    private Rigidbody rb;
+    public Rigidbody rb;
     private int count;
     private float movementX;
     private float movementY;
@@ -24,9 +24,11 @@ public class PlayerController : MonoBehaviour
     private bool slamForceState;
     private bool isGroundedUnlocked = false;
     private bool isSlamUnlocked = false;
+    public bool enablePlayerMovement = true;
 
     void Start()
     {
+        enablePlayerMovement = true;
         winTextObject.SetActive(false);
         rb = GetComponent<Rigidbody>();
 
@@ -58,9 +60,12 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if(enablePlayerMovement == true)
+        {
+            Vector3 movement = new Vector3(movementX, 0.0f, movementY);
+            rb.AddForce(movement * speed);
+        }
         
-        Vector3 movement = new Vector3(movementX, 0.0f, movementY);
-        rb.AddForce(movement * speed);
 
         
 
