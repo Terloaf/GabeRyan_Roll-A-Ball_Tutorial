@@ -12,6 +12,8 @@ TagManager:
   - SlamPowerUp
   - Roll Event
   - EnemySphere
+  - OutOfBounds
+  - CheckPoint
   layers:
   - Default
   - TransparentFX
