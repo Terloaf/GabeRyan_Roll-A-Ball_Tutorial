@@ -12,7 +12,7 @@ public class CheckPoint : MonoBehaviour
     private int checkCount = 1;
     public Transform respawn1;
     public Transform respawn2;
-    private Transform respawn3;
+    public Transform respawn3;
     private Transform[] Respawner = new Transform[3];
     private int i = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -28,9 +28,9 @@ public class CheckPoint : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.R))
         {
-
-            transform.position = Respawner[i].position;
             SceneManager.LoadScene("Minigame");
+            transform.position = Respawner[i].position;
+            
         }
     }
 
@@ -40,7 +40,8 @@ public class CheckPoint : MonoBehaviour
         if (other.CompareTag("CheckPoint"))
         {
             other.gameObject.SetActive(false);
-            checkCount += 1;    
+            checkCount += 1;
+            i += 1;
         }
 
         
