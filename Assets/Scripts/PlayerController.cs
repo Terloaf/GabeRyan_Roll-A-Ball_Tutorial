@@ -4,11 +4,11 @@ using UnityEngine.InputSystem;
 using TMPro;
 using UnityEngine.UI;
 using System;
+using static CheckPoint;
 
 public class PlayerController : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-
     public Rigidbody rb;
     private int count;
     private float movementX;
@@ -43,6 +43,9 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
+
+        
+
         if (isGrounded == true && isGroundedUnlocked == true && Input.GetKeyDown(KeyCode.Space))
         {
             slamForceState = false;
@@ -123,10 +126,10 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
 
             winTextObject.gameObject.SetActive(true);
-            winTextObject.GetComponent<TextMeshProUGUI>().text = "You lose!";
+            winTextObject.GetComponent<TextMeshProUGUI>().text = "You lose! Press R to restart or Esc to quit.";
         }
 
         if (slamForceState == true && collision.gameObject.CompareTag("Breakable"))
@@ -136,9 +139,11 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("EnemySphere"))
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
             winTextObject.gameObject.SetActive(true);
-            winTextObject.GetComponent<TextMeshProUGUI>().text = "You lose!";
+            winTextObject.GetComponent<TextMeshProUGUI>().text = "You lose! Press R to restart or Esc to quit.";
+            
+            
         }
         
     }

@@ -16,7 +16,8 @@ public class NewEventScript : MonoBehaviour
         if (triggerEvent == true)
         {
             EnemySpheresParent.SetActive(true);
-            Destroy(GameObject.FindGameObjectWithTag("Roll Event"));
+
+            triggerEvent = false;
         }
 
        

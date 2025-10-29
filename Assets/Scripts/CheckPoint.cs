@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class CheckPoint : MonoBehaviour
 {
+    public Transform enemyRespawnPosition;
     public GameObject enemySpheresParent;
     public PlayerController playerController;
     private int checkCount = 1;
@@ -28,18 +29,7 @@ public class CheckPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.R))
-        { 
-            
-            transform.position = Respawner[i].position;
-
-
-            Destroy(enemySpheresParent);
-
-            enemySpheresParent = Instantiate(enemySpheresParent, enemySpheresParent.transform.position, Quaternion.identity);
-          
-
-        }
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -90,7 +80,7 @@ public class CheckPoint : MonoBehaviour
 
 
         // suspend execution for 5 seconds
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
 
         playerController.rb.isKinematic = false;
         playerController.enablePlayerMovement = true;
