@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using NUnit.Framework;
 using System.Collections;
 using System.Threading;
 using Unity.VisualScripting;
@@ -8,6 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class CheckPoint : MonoBehaviour
 {
+    public GameObject enemySpheresParent;
     public PlayerController playerController;
     private int checkCount = 1;
     public Transform respawn1;
@@ -27,10 +29,16 @@ public class CheckPoint : MonoBehaviour
     void Update()
     {
         if (Input.GetKey(KeyCode.R))
-        {
-            SceneManager.LoadScene("Minigame");
-            transform.position = Respawner[i].position;
+        { 
             
+            transform.position = Respawner[i].position;
+
+
+            Destroy(enemySpheresParent);
+
+            enemySpheresParent = Instantiate(enemySpheresParent, enemySpheresParent.transform.position, Quaternion.identity);
+          
+
         }
     }
 
