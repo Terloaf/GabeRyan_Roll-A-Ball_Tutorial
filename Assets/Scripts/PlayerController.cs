@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     private bool isSlamUnlocked = false;
     public bool enablePlayerMovement = true;
 
+    public GameObject powerUpHelp;
+
     void Start()
     {
         enablePlayerMovement = true;
@@ -39,7 +41,10 @@ public class PlayerController : MonoBehaviour
 
         BridgeFall = BridgeObject.GetComponent<Animator>();
         BridgeFall.enabled = false;
-      
+
+        powerUpHelp.SetActive(false);
+        
+        
     }
     private void Update()
     {
@@ -48,6 +53,11 @@ public class PlayerController : MonoBehaviour
 
         if (isGrounded == true && isGroundedUnlocked == true && Input.GetKeyDown(KeyCode.Space))
         {
+            if(powerUpHelp == isActiveAndEnabled)
+            {
+                powerUpHelp.SetActive(false);
+            }
+            
             slamForceState = false;
             rb.AddForce(Vector3.up * jumpForce);
 
@@ -100,13 +110,16 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             count = count + 1;
             SetCountText();
+
+
         }
         
         if (other.gameObject.CompareTag("JumpPowerUp"))
         {
             other.gameObject.SetActive(false);
             isGroundedUnlocked = true;
-            BridgeFall.enabled = true; 
+            BridgeFall.enabled = true;
+            powerUpHelp.SetActive(true);
         }
         if (other.gameObject.CompareTag("SlamPowerUp"))
         {
