@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     public bool enablePlayerMovement = true;
 
     public GameObject powerUpHelp;
+    public GameObject powerUpHelp2;
 
     void Start()
     {
@@ -43,6 +44,7 @@ public class PlayerController : MonoBehaviour
         BridgeFall.enabled = false;
 
         powerUpHelp.SetActive(false);
+        powerUpHelp2.SetActive(false);
         
         
     }
@@ -66,6 +68,10 @@ public class PlayerController : MonoBehaviour
         {
             slamForceState = true;
             rb.AddForce(Vector3.down * slamForce);
+            if(powerUpHelp2 == isActiveAndEnabled)
+            {
+                powerUpHelp2.SetActive(false);
+            }
             
         }
         
@@ -125,6 +131,7 @@ public class PlayerController : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             isSlamUnlocked = true;
+            powerUpHelp2.SetActive(true);
         }
     }
 
@@ -135,7 +142,11 @@ public class PlayerController : MonoBehaviour
             slamForceState = false;
             isGrounded = true;
         }
-        
+        if (collision.gameObject.CompareTag("Breakable"))
+        {
+            
+            isGrounded = true;
+        }
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -168,10 +179,19 @@ public class PlayerController : MonoBehaviour
             slamForceState = false;
             isGrounded = true;
         }
+        if (collision.gameObject.CompareTag("Breakable"))
+        {
+            
+            isGrounded = true;
+        }
     }
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = false;
+        }
+        if (collision.gameObject.CompareTag("Breakable"))
         {
             isGrounded = false;
         }
