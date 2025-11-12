@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public Rigidbody rb;
-    private int count;
+    public int count;
     private float movementX;
     private float movementY;
     public float speed = 0;
@@ -104,7 +104,6 @@ public class PlayerController : MonoBehaviour
         countText.text = "Count: " + count.ToString();
         if(count >= 12)
         {
-            winTextObject.SetActive(true);
             Destroy(GameObject.FindGameObjectWithTag("Enemy"));
         }
     }
