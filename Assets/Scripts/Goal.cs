@@ -9,7 +9,7 @@ public class Goal : MonoBehaviour
     public TextMeshProUGUI ScoreText;
     public int score = 0;
     private bool LevelClear = false;
-    
+    public GameObject Respawner;
    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -40,8 +40,8 @@ public class Goal : MonoBehaviour
             ScoreText.text = "Score: " + (score *= 100);
             LevelClear = true;
 
-            
-            
+
+            Respawner.SetActive(false);
         }
     }
 }

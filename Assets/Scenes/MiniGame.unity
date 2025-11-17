@@ -29240,6 +29240,7 @@ MonoBehaviour:
   LevelClearText: {fileID: 28966168}
   ScoreText: {fileID: 1204093574}
   score: 0
+  Respawner: {fileID: 1856089950}
 --- !u!65 &1419389573
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33902,7 +33903,7 @@ GameObject:
   - component: {fileID: 1856089952}
   - component: {fileID: 1856089951}
   m_Layer: 0
-  m_Name: OutOfBounds (1)
+  m_Name: OutOfBounds 2
   m_TagString: OutOfBounds
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -33991,8 +33992,8 @@ Transform:
   m_GameObject: {fileID: 1856089950}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.7231, y: -32.62, z: -59.499996}
-  m_LocalScale: {x: 46.272694, y: 1, z: 40.89851}
+  m_LocalPosition: {x: 0.7231, y: -32.62, z: -66.872}
+  m_LocalScale: {x: 131.83554, y: 1, z: 70.1589}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
