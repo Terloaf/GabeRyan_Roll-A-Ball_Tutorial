@@ -1108,6 +1108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 613683973}
   - component: {fileID: 613683972}
+  - component: {fileID: 613683974}
   m_Layer: 0
   m_Name: LeverParent
   m_TagString: Untagged
@@ -1127,7 +1128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7b3b27b6a81a6f47819a432dc50d4d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leverPull: {fileID: 1099954063}
   lever: {fileID: 1099954058}
   player: {fileID: 55063518}
 --- !u!4 &613683973
@@ -1147,6 +1147,27 @@ Transform:
   - {fileID: 88785518}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &613683974
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613683971}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0465698, y: 1.2474995, z: 1}
+  m_Center: {x: -0.4767151, y: 3.914987, z: -7}
 --- !u!1 &640566915
 GameObject:
   m_ObjectHideFlags: 0
@@ -2515,8 +2536,8 @@ Transform:
   m_GameObject: {fileID: 1373480871}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.60709, y: 2.358432, z: -4.0716896}
-  m_LocalScale: {x: 159.95901, y: 6, z: 0.0695}
+  m_LocalPosition: {x: 13.60709, y: 5.4622, z: -4.0716896}
+  m_LocalScale: {x: 159.95901, y: 12.205801, z: 0.0695}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1757202869}
@@ -2662,6 +2683,9 @@ MonoBehaviour:
   speed: 0.35
   animator: {fileID: 804437213}
   rightArmSlamActive: 0
+  dmgCount: 0
+  bossAnimator: {fileID: 804437213}
+  bossArmObject: {fileID: 804437211}
 --- !u!4 &1491176988
 Transform:
   m_ObjectHideFlags: 0
@@ -3494,8 +3518,8 @@ Transform:
   m_GameObject: {fileID: 1857714649}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.639072, y: 2.405332, z: -5.2226896}
-  m_LocalScale: {x: 160.00436, y: 6.0956264, z: 0.0695}
+  m_LocalPosition: {x: 13.639072, y: 5.5576, z: -5.2226896}
+  m_LocalScale: {x: 160.00436, y: 12.400333, z: 0.0695}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1757202869}

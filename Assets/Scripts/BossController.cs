@@ -17,7 +17,7 @@ public class BossController : MonoBehaviour
     public bool rightArmSlamActive = false;
     private Vector3 startPos;
     private Vector3 playerStartpos;
-    private int dmgCount = 0;
+    public int dmgCount = 0;
 
     public Animator bossAnimator;
     public GameObject bossArmObject;
@@ -27,6 +27,10 @@ public class BossController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        bossAnimator = bossArmObject.GetComponent<Animator>();
+
+
+
         startPos = transform.position;
         playerStartpos = player.transform.position;
         offset = transform.position - player.transform.position;
@@ -44,7 +48,9 @@ public class BossController : MonoBehaviour
         {
             transform.position = startPos;
             dmgCount += 1;
+            bossAnimator.enabled = false;
             StartCoroutine(DmgWait());
+
             return;
         }
 
@@ -67,9 +73,10 @@ public class BossController : MonoBehaviour
     }
     IEnumerator DmgWait()
     {
-        yield return new WaitForSeconds(5);
-
+        yield return new WaitForSeconds(10);
+        bossAnimator.enabled = true;
         leverstate = false;
+        leverPull.SetBool("LeverResetState", true);
     }
 
 

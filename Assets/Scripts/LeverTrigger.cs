@@ -9,9 +9,13 @@ public class LeverTrigger : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        leverPull = lever.GetComponent<Animator>();
         
+        leverPull = lever.GetComponent<Animator>();
         leverPull.enabled = false;
+
+        
+
+
     }
 
     // Update is called once per frame
