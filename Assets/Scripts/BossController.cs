@@ -69,10 +69,13 @@ public class BossController : MonoBehaviour
     }
     IEnumerator DmgWait()
     {
+        yield return new WaitForSeconds(1);
+        animator.SetBool("IsHurt", false);
+
         yield return new WaitForSeconds(10);
         leverstate = false;
         leverPull.SetBool("LeverResetState", true);
-        animator.SetBool("IsHurt", false);
+        
     }
 
 
