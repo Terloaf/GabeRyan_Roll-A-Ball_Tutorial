@@ -16,8 +16,6 @@ public class BossController : MonoBehaviour
     public Animator animator;
     public bool rightArmSlamActive = false;
     private Vector3 startPos;
-    private Vector3 playerStartpos;
-    public int dmgCount = 0;
 
     public Animator bossAnimator;
     public GameObject bossArmObject;
@@ -32,7 +30,6 @@ public class BossController : MonoBehaviour
 
 
         startPos = transform.position;
-        playerStartpos = player.transform.position;
         offset = transform.position - player.transform.position;
 
         
@@ -46,9 +43,8 @@ public class BossController : MonoBehaviour
 
         if (leverstate == true)
         {
-            transform.position = startPos;
-            dmgCount += 1;
-            bossAnimator.enabled = false;
+            animator.SetBool("IsHurt", true);
+            transform.position = Vector3.SmoothDamp(transform.position, startPos, ref Velocity, speed);
             StartCoroutine(DmgWait());
 
             return;
@@ -74,9 +70,9 @@ public class BossController : MonoBehaviour
     IEnumerator DmgWait()
     {
         yield return new WaitForSeconds(10);
-        bossAnimator.enabled = true;
         leverstate = false;
         leverPull.SetBool("LeverResetState", true);
+        animator.SetBool("IsHurt", false);
     }
 
 

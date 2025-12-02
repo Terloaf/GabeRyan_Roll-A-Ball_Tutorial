@@ -750,7 +750,7 @@ Transform:
   m_GameObject: {fileID: 234211988}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.589169, y: 2.203229, z: 9.493374}
+  m_LocalPosition: {x: -16.58917, y: 2.203229, z: 9.493374}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2683,7 +2683,6 @@ MonoBehaviour:
   speed: 0.35
   animator: {fileID: 804437213}
   rightArmSlamActive: 0
-  dmgCount: 0
   bossAnimator: {fileID: 804437213}
   bossArmObject: {fileID: 804437211}
 --- !u!4 &1491176988
@@ -2695,7 +2694,7 @@ Transform:
   m_GameObject: {fileID: 1491176986}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.093782, y: 7.2725925, z: 12.367771}
+  m_LocalPosition: {x: 13.093782, y: 7.272593, z: 12.36777}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
