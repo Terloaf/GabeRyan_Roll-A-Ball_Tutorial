@@ -3,6 +3,9 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.SceneManagement;
+using System.Threading;
+using static LeverTrigger;
+using System.Collections;
 
 public class BossController : MonoBehaviour
 {
@@ -12,24 +15,38 @@ public class BossController : MonoBehaviour
     public float speed;
     public Animator animator;
     public bool rightArmSlamActive = false;
+    private Vector3 startPos;
+    private Vector3 playerStartpos;
+    private int dmgCount = 0;
+
+    public Animator bossAnimator;
+    public GameObject bossArmObject;
 
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        startPos = transform.position;
+        playerStartpos = player.transform.position;
         offset = transform.position - player.transform.position;
 
         
-      
+
     }
     
     void Update()
     {
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
-        
+
+        if (leverstate == true)
+        {
+            transform.position = startPos;
+            dmgCount += 1;
+            StartCoroutine(DmgWait());
+            return;
+        }
 
         if (stateInfo.IsName("RightArmSlamCoolDown"))
         {
@@ -42,10 +59,20 @@ public class BossController : MonoBehaviour
             rightArmSlamActive = false;
             transform.position = Vector3.SmoothDamp(transform.position, player.transform.position + offset, ref Velocity, speed);
         }
-            
+
+
+        
+
+        
+    }
+    IEnumerator DmgWait()
+    {
+        yield return new WaitForSeconds(5);
+
+        leverstate = false;
     }
 
-    
+
 }
     // Update is called once per frame
  

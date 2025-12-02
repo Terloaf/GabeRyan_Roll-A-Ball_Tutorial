@@ -32,6 +32,7 @@ public class FistCollision : MonoBehaviour
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
         if (stateInfo.IsName("RightArmSlamMotion"))
         {
+
             if (collision.gameObject.CompareTag("Player"))
             {
                 player.SetActive(false);
@@ -41,7 +42,7 @@ public class FistCollision : MonoBehaviour
 
             }
         }
-        
+
     }
     //Checks if player is in contact with object EVEN if player is not moving
     private void OnTriggerEnter(Collider other)
@@ -56,8 +57,11 @@ public class FistCollision : MonoBehaviour
                 winTextObject.SetActive(true);
                 winTextObject.GetComponent<TextMeshProUGUI>().text = "You lose! Press Space to retry.";
             }
+
+
         }
-        
-       
+
     }
 }
+
+
