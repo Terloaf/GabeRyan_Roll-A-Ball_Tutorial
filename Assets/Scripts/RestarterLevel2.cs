@@ -1,9 +1,10 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static Goal;
 
-public class Restarter : MonoBehaviour
+public class RestarterLevel2 : MonoBehaviour
 {
+    public static bool isRestarted = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,7 +16,9 @@ public class Restarter : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.R))
         {
-            SceneManager.LoadScene("MiniGame");
+            SceneManager.LoadScene("level 2");
+            isRestarted = true;
+            
 
 
         }
@@ -23,7 +26,7 @@ public class Restarter : MonoBehaviour
         {
             Application.Quit();
 
-            
+
         }
     }
 }

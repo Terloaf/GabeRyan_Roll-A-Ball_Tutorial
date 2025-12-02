@@ -10,12 +10,14 @@ public class Goal : MonoBehaviour
     public int score = 0;
     private bool LevelClear = false;
     public GameObject Respawner;
+    public static bool level2State;
    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         LevelClearText.SetActive(false);
         ScoreText.text = " ";
+        level2State = false;
     }
 
     // Update is called once per frame
@@ -24,7 +26,9 @@ public class Goal : MonoBehaviour
         score = GameObject.Find("Player").GetComponent<PlayerController>().count;
         if(LevelClear == true && Input.GetKey(KeyCode.Space))
         {
+            level2State = true;
             SceneManager.LoadScene("Level 2");
+            
         }
         else if (LevelClear == true && Input.GetKey(KeyCode.Space) && score >= 1200)
         {
