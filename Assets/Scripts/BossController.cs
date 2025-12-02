@@ -2,6 +2,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.SceneManagement;
 
 public class BossController : MonoBehaviour
 {
@@ -23,9 +24,22 @@ public class BossController : MonoBehaviour
         
       
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            gameObject.SetActive(false);
+        }
+
+    }
     void Update()
     {
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+        
 
         if (stateInfo.IsName("RightArmSlamCoolDown"))
         {
@@ -40,6 +54,8 @@ public class BossController : MonoBehaviour
         }
             
     }
+
+    
 }
     // Update is called once per frame
  
