@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private bool slamForceState;
     private bool isGroundedUnlocked = false;
-    private bool isSlamUnlocked = false;
+    public static bool isSlamUnlocked = false;
     public bool enablePlayerMovement = true;
 
     public GameObject powerUpHelp;
