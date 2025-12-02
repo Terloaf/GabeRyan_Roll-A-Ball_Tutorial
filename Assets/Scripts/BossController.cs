@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using System.Threading;
 using static LeverTrigger;
 using System.Collections;
+using static RestarterLevel2;
 
 public class BossController : MonoBehaviour
 {
@@ -38,6 +39,7 @@ public class BossController : MonoBehaviour
     
     void Update()
     {
+
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
 
@@ -70,11 +72,12 @@ public class BossController : MonoBehaviour
     IEnumerator DmgWait()
     {
 
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(5);
         leverstate = false;
         leverPull.SetBool("LeverResetState", true);
         animator.SetBool("IsHurt", false);
     }
+
 
 
 }

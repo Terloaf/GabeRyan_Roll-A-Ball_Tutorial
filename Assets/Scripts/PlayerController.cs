@@ -5,7 +5,9 @@ using TMPro;
 using UnityEngine.UI;
 using System;
 using static CheckPoint;
-
+using UnityEngine.SceneManagement;
+using static Goal;
+using static RestarterLevel2;
 public class PlayerController : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,9 +24,10 @@ public class PlayerController : MonoBehaviour
     private float slamForce = 1000;
     private bool isGrounded;
     private bool slamForceState;
-    private bool isGroundedUnlocked = false;
+    public static bool isGroundedUnlocked = false;
     public static bool isSlamUnlocked = false;
     public bool enablePlayerMovement = true;
+    public GameObject restarter;
 
     public GameObject powerUpHelp;
     public GameObject powerUpHelp2;
@@ -45,13 +48,30 @@ public class PlayerController : MonoBehaviour
 
         powerUpHelp.SetActive(false);
         powerUpHelp2.SetActive(false);
+
+
         
         
     }
     private void Update()
     {
 
-        
+        if(level2State == true)
+        {
+            isSlamUnlocked = false;
+            isGroundedUnlocked = false;
+            level2State = false;
+            Destroy(restarter.gameObject);
+        }
+
+        if (isRestarted == true)
+        {
+            
+            isSlamUnlocked = false;
+            isGroundedUnlocked = false;
+            level2State = false;
+            isRestarted = false;
+        }
 
         if (isGrounded == true && isGroundedUnlocked == true && Input.GetKeyDown(KeyCode.Space))
         {

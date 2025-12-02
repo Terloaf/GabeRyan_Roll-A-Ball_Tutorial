@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static Goal;
 
 public class Restarter : MonoBehaviour
 {
