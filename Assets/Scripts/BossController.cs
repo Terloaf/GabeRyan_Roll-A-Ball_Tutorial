@@ -24,17 +24,7 @@ public class BossController : MonoBehaviour
         
       
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-
-
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            gameObject.SetActive(false);
-        }
-
-    }
+    
     void Update()
     {
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
